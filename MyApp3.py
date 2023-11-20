@@ -48,7 +48,7 @@ import numpy as np
 
 if st.button("ทำนายผล"):
    # ทำนาย
-   #dt = pd.read_csv("./data/iris.csv") 
+   raw_data=pd.read_csv('./data/Employee3.csv')
 
    X = raw_data.drop('LeaveOrNot', axis=1)
    y = raw_data.LeaveOrNot   
