@@ -61,7 +61,7 @@ if st.button("ทำนายผล"):
     st.write(rf_model.predict(x_input))
     out=rf_model.predict(x_input)
 
-    if out[0]==0:
+    if out[0]== "0":
      st.header("อยู่ต่อ")
     else:
       st.header("มีแนวโน้มว่าจะลาออก")
