@@ -55,18 +55,18 @@ if st.button("ทำนายผล"):
     rf = RandomForestClassifier()
     rf.fit(X_train, y_train)
 
-    #ข้อมูล input สำหรับทดลองจำแนกข้อมูล
-   #x_input = np.array([[Education,JoiningYear,City,PaymentTier,Age,Gender,EverBenched,ExperienceInCurrentDomain]])
+   #ข้อมูล input สำหรับทดลองจำแนกข้อมูล
+   x_input = np.array([[Education, City, PaymentTier, Age, Gender, EverBenched, ExperienceInCurrentDomain]])
     # เอา input ไปทดสอบ
-   #st.write(rf.predict(X_test))
-   #out=rf.predict(X_test)
+   st.write(rf.predict(X_test))
+   out=rf.predict(X_test)
 
-    #if out[0]==0:
+    if out[0]==0:
       #st.image("./pic/iris.jpg")
-     # st.header("อยู่ต่อ")
-    #else:
+      st.header("อยู่ต่อ")
+    else:
       #st.image("./pic/iris1.jpg")  
-     # st.header("มีแนวโน้มว่าจะลาออก")
-    #st.button("ไม่ทำนายผล")
-#else :
- #   st.button("ไม่ทำนายผล")
+      st.header("มีแนวโน้มว่าจะลาออก")
+    st.button("ไม่ทำนายผล")
+else :
+    st.button("ไม่ทำนายผล")
