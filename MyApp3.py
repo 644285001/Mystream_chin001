@@ -36,13 +36,13 @@ st.markdown("")
 
 
 ptlen = st.slider("กรุณาเลือกข้อมูล JoiningYear",2012,2018)
-splen = st.number_input("กรุณาเลือกข้อมูล Education")
-splen = st.number_input("กรุณาเลือกข้อมูล City")
-splen = st.number_input("กรุณาเลือกข้อมูล PaymentTier")
-splen = st.number_input("กรุณาเลือกข้อมูล Age")
-splen = st.number_input("กรุณาเลือกข้อมูล Gender")
-splen = st.number_input("กรุณาเลือกข้อมูล EverBenched")
-splen = st.number_input("กรุณาเลือกข้อมูล ExperienceInCurrentDomain")
+splen = st.number_input("กรุณาเลือกข้อมูล Education", step=1, format="%d")
+splen = st.number_input("กรุณาเลือกข้อมูล City", step=1, format="%d")
+splen = st.number_input("กรุณาเลือกข้อมูล PaymentTier", step=1, format="%d")
+splen = st.number_input("กรุณาเลือกข้อมูล Age", step=1, format="%d")
+splen = st.number_input("กรุณาเลือกข้อมูล Gender", step=1, format="%d")
+splen = st.number_input("กรุณาเลือกข้อมูล EverBenched", step=1, format="%d")
+splen = st.number_input("กรุณาเลือกข้อมูล ExperienceInCurrentDomain", step=1, format="%d")
 
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
