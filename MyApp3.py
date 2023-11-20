@@ -35,16 +35,40 @@ st.markdown(html_2, unsafe_allow_html=True)
 st.markdown("")   
 
 
-ptlen = st.slider("กรุณาเลือกข้อมูล JoiningYear",2012,2018)
-splen = st.number_input("กรุณาเลือกข้อมูล Education", step=1, format="%d")
-splen = st.number_input("กรุณาเลือกข้อมูล City", step=1, format="%d")
-splen = st.number_input("กรุณาเลือกข้อมูล PaymentTier", step=1, format="%d")
-splen = st.number_input("กรุณาเลือกข้อมูล Age", step=1, format="%d")
-splen = st.number_input("กรุณาเลือกข้อมูล Gender", step=1, format="%d")
-splen = st.number_input("กรุณาเลือกข้อมูล EverBenched", step=1, format="%d")
-splen = st.number_input("กรุณาเลือกข้อมูล ExperienceInCurrentDomain", step=1, format="%d")
+s1 = st.slider("กรุณาเลือกข้อมูล JoiningYear",2012,2018)
+s2 = st.number_input("กรุณาเลือกข้อมูล Education", step=1, format="%d")
+s3 = st.number_input("กรุณาเลือกข้อมูล City", step=1, format="%d")
+s4 = st.number_input("กรุณาเลือกข้อมูล PaymentTier", step=1, format="%d")
+s5 = st.number_input("กรุณาเลือกข้อมูล Age", step=1, format="%d")
+s6 = st.number_input("กรุณาเลือกข้อมูล Gender", step=1, format="%d")
+s7 = st.number_input("กรุณาเลือกข้อมูล EverBenched", step=1, format="%d")
+s8 = st.number_input("กรุณาเลือกข้อมูล ExperienceInCurrentDomain", step=1, format="%d")
 
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 import numpy as np
+
+if st.button("ทำนายผล"):
+    X= raw_data.drop(columns='LeaveOrNot')
+    y=raw_data['LeaveOrNot']
+
+    X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=20, test_size=0.3)
+
+    rf = RandomForestClassifier()
+    rf.fit(X_train, y_train)
+
+    #ข้อมูล input สำหรับทดลองจำแนกข้อมูล
+   X_input = np.array([[s1, s2, s3, s4, s5, s6, s7, s8]])
+   st.write(rf.predict(X_input))
+   out=rf.predict(X_input)
+
+   if out[0]==0:
+      #st.image("./pic/iris.jpg")
+      st.header("อยู่ต่อ")
+    else:
+      #st.image("./pic/iris1.jpg")  
+      st.header("มีแนวโน้มว่าจะลาออก")
+    st.button("ไม่ทำนายผล")
+else :
+    st.button("ไม่ทำนายผล")
 
