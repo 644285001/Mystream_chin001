@@ -50,8 +50,8 @@ if st.button("ทำนายผล"):
    # ทำนาย
    #dt = pd.read_csv("./data/iris.csv") 
 
-   X = dt.drop('LeaveOrNot', axis=1)
-   y = dt.LeaveOrNot   
+   X = raw_data.drop('LeaveOrNot', axis=1)
+   y = raw_data.LeaveOrNot   
 
    Knn_model = KNeighborsClassifier(n_neighbors=3)
    Knn_model.fit(X, y)
