@@ -47,19 +47,19 @@ from sklearn.model_selection import train_test_split
 import numpy as np
 
 if st.button("ทำนายผล"):
-      X = raw_data.drop('LeaveOrNot', axis=1)
-      y = raw_data.LeaveOrNot
+    X= raw_data.drop(columns='LeaveOrNot')
+    y=raw_data['LeaveOrNot']
 
-   
+    X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=20, test_size=0.3)
 
     rf = RandomForestClassifier()
-    rf.fit(X, y)
+    rf.fit(X_train, y_train)
 
-   #ข้อมูล input สำหรับทดลองจำแนกข้อมูล
+    #ข้อมูล input สำหรับทดลองจำแนกข้อมูล
    x_input = np.array([[Education, JoiningYear, City, PaymentTier, Age, Gender, EverBenched, ExperienceInCurrentDomain]])
     # เอา input ไปทดสอบ
-   st.write(rf.predict(X_test))
-   out=rf.predict(X_test)
+   st.write(rf.predict(x_input))
+   out=rf.predict(x_input)
 
     if out[0]==0:
       #st.image("./pic/iris.jpg")
