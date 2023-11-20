@@ -50,10 +50,10 @@ if st.button("ทำนายผล"):
       X = raw_data.drop('LeaveOrNot', axis=1)
       y = raw_data.LeaveOrNot
 
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3)
+   
 
     rf = RandomForestClassifier()
-    rf.fit(X_train, y_train)
+    rf.fit(X, y)
 
    #ข้อมูล input สำหรับทดลองจำแนกข้อมูล
    x_input = np.array([[Education, JoiningYear, City, PaymentTier, Age, Gender, EverBenched, ExperienceInCurrentDomain]])
