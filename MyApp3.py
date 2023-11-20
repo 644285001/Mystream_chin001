@@ -44,32 +44,30 @@ splen = st.number_input("กรุณาเลือกข้อมูล EverBe
 splen = st.number_input("กรุณาเลือกข้อมูล ExperienceInCurrentDomain", step=1, format="%d")
 
 from sklearn.model_selection import train_test_split
-from sklearn.neighbors import KNeighborsClassifier
+from sklearn.ensemble import RandomForestClassifier
 import numpy as np
 
 if st.button("ทำนายผล"):
-   # ทำนาย
-   #raw_data=pd.read_csv('./data/Employee3.csv')
+    X= raw_data.drop(columns='LeaveOrNot')
+    y=raw_data['LeaveOrNot']
 
-   X = raw_data.drop('LeaveOrNot', axis=1)
-   y = raw_data.LeaveOrNot   
+    X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=20, test_size=0.3)
 
-   Knn_model = KNeighborsClassifier(n_neighbors=3)
-   Knn_model.fit(X, y)
+    rf = RandomForestClassifier()
+    rf.fit(X_train, y_train)
 
     #ข้อมูล input สำหรับทดลองจำแนกข้อมูล
    x_input = np.array([[Education, JoiningYear, City, PaymentTier, Age, Gender, EverBenched, ExperienceInCurrentDomain]])
     # เอา input ไปทดสอบ
-    # เอา input ไปทดสอบ
-   st.write(Knn_model.predict(x_input))
-   out=Knn_model.predict(x_input)
+   st.write(rf.predict(x_input))
+   out=rf.predict(x_input)
 
-   if out[0]== 0 :
+    if out[0]== 0:
       #st.image("./pic/iris.jpg")
-      st.header("Not")
-   else:
+      st.header("อยู่ต่อ")
+    else:
       #st.image("./pic/iris1.jpg")  
-      st.header("Leave")
-   st.button("ไม่ทำนายผล")
+      st.header("มีแนวโน้มว่าจะลาออก")
+    st.button("ไม่ทำนายผล")
 else :
     st.button("ไม่ทำนายผล")
