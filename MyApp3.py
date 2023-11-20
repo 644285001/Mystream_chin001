@@ -44,11 +44,12 @@ splen = st.number_input("กรุณาเลือกข้อมูล EverBe
 splen = st.number_input("กรุณาเลือกข้อมูล ExperienceInCurrentDomain", step=1, format="%d")
 
 from sklearn.model_selection import train_test_split
+from sklearn.neighbors import KNeighborsClassifier
 import numpy as np
 
 if st.button("ทำนายผล"):
    # ทำนาย
-   raw_data=pd.read_csv('./data/Employee3.csv')
+   #raw_data=pd.read_csv('./data/Employee3.csv')
 
    X = raw_data.drop('LeaveOrNot', axis=1)
    y = raw_data.LeaveOrNot   
