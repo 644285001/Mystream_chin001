@@ -34,9 +34,8 @@ html_2 = """
 st.markdown(html_2, unsafe_allow_html=True)
 st.markdown("")   
 
-
-s1 = st.slider("กรุณาเลือกข้อมูล JoiningYear",2012,2018)
-s2 = st.number_input("กรุณาเลือกข้อมูล Education", step=1, format="%d")
+s1 = st.number_input("กรุณาเลือกข้อมูล Education", step=1, format="%d")
+s2 = st.slider("กรุณาเลือกข้อมูล JoiningYear",2012,2018)
 s3 = st.number_input("กรุณาเลือกข้อมูล City", step=1, format="%d")
 s4 = st.number_input("กรุณาเลือกข้อมูล PaymentTier", step=1, format="%d")
 s5 = st.number_input("กรุณาเลือกข้อมูล Age", step=1, format="%d")
@@ -54,13 +53,13 @@ if st.button("ทำนายผล"):
 
     X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=20, test_size=0.3)
 
-    rf = RandomForestClassifier()
-    rf.fit(X_train, y_train)
+    rf_model = RandomForestClassifier()
+    rf_model.fit(X_train, y_train)
 
     #ข้อมูล input สำหรับทดลองจำแนกข้อมูล
-   X_input = np.array([[s1, s2, s3, s4, s5, s6, s7, s8]])
-   st.write(rf.predict(X_input))
-   out=rf.predict(X_input)
+   x_input = np.array([[s1, s2, s3, s4, s5, s6, s7, s8]])
+   st.write(rf_model.predict(x_input))
+   out=rf_model.predict(x_input)
 
    if out[0]==0:
       #st.image("./pic/iris.jpg")
