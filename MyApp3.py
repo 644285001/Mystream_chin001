@@ -57,7 +57,7 @@ if st.button("ทำนายผล"):
     rf.fit(X_train, y_train)
 
     #ข้อมูล input สำหรับทดลองจำแนกข้อมูล
-   x_input = np.array([[Education, JoiningYear, City, PaymentTier, Age, Gender, EverBenched, ExperienceInCurrentDomain]])
+   x_input = np.array([Education, JoiningYear, City, PaymentTier, Age, Gender, EverBenched, ExperienceInCurrentDomain])
     # เอา input ไปทดสอบ
    st.write(rf.predict(x_input))
    out=rf.predict(x_input)
