@@ -63,7 +63,7 @@ if st.button("ทำนายผล"):
 
     if out[0]== 0:
      st.header("อยู่ต่อ")
-    else:
+    elif out[0]== 1:
       st.header("มีแนวโน้มว่าจะลาออก")
       st.button("ไม่ทำนายผล")
 else :
