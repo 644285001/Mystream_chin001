@@ -64,7 +64,7 @@ if st.button("ทำนายผล"):
    st.write(Knn_model.predict(x_input))
    out=Knn_model.predict(x_input)
 
-   if out[0]=="0":
+   if out[0]== 0 :
       #st.image("./pic/iris.jpg")
       st.header("Not")
    else:
