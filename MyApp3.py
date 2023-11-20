@@ -34,40 +34,17 @@ html_2 = """
 st.markdown(html_2, unsafe_allow_html=True)
 st.markdown("")   
 
-splen = st.number_input("กรุณาเลือกข้อมูล Education", step=1, format="%d")
-splen = st.number_input("กรุณาเลือกข้อมูล JoiningYear", step=1, format="%d")
-splen = st.number_input("กรุณาเลือกข้อมูล City", step=1, format="%d")
-splen = st.number_input("กรุณาเลือกข้อมูล PaymentTier", step=1, format="%d")
-splen = st.number_input("กรุณาเลือกข้อมูล Age", step=1, format="%d")
-splen = st.number_input("กรุณาเลือกข้อมูล Gender", step=1, format="%d")
-splen = st.number_input("กรุณาเลือกข้อมูล EverBenched", step=1, format="%d")
-splen = st.number_input("กรุณาเลือกข้อมูล ExperienceInCurrentDomain", step=1, format="%d")
+
+ptlen = st.slider("กรุณาเลือกข้อมูล JoiningYear",2012,2018)
+splen = st.number_input("กรุณาเลือกข้อมูล Education")
+splen = st.number_input("กรุณาเลือกข้อมูล City")
+splen = st.number_input("กรุณาเลือกข้อมูล PaymentTier")
+splen = st.number_input("กรุณาเลือกข้อมูล Age")
+splen = st.number_input("กรุณาเลือกข้อมูล Gender")
+splen = st.number_input("กรุณาเลือกข้อมูล EverBenched")
+splen = st.number_input("กรุณาเลือกข้อมูล ExperienceInCurrentDomain")
 
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 import numpy as np
 
-if st.button("ทำนายผล"):
-    X= raw_data.drop(columns='LeaveOrNot')
-    y=raw_data['LeaveOrNot']
-
-    X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=20, test_size=0.3)
-
-    rf = RandomForestClassifier()
-    rf.fit(X_train, y_train)
-
-    #ข้อมูล input สำหรับทดลองจำแนกข้อมูล
-   x_input = np.array([Education, JoiningYear, City, PaymentTier, Age, Gender, EverBenched, ExperienceInCurrentDomain])
-    # เอา input ไปทดสอบ
-   st.write(rf.predict(x_input))
-   out=rf.predict(x_input)
-
-    if out[0]== 0:
-      #st.image("./pic/iris.jpg")
-      st.header("อยู่ต่อ")
-    else:
-      #st.image("./pic/iris1.jpg")  
-      st.header("มีแนวโน้มว่าจะลาออก")
-    st.button("ไม่ทำนายผล")
-else :
-    st.button("ไม่ทำนายผล")
